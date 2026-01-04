@@ -1,0 +1,734 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(120deg, #0a174e 0%, #000 100%);
+  color: #fff;
+}
+
+.top-image {
+  /* 原有属性保留 */
+  position: absolute;
+  max-width: 100%;
+  height: auto;
+  /* 新增水平居中逻辑 */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.top-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  padding : 0;
+  z-index: 1;
+}
+
+.logo-bar {
+  position: absolute;
+  top: 28px;                /* 顶部偏下，可微调 */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;              /* 确保在 blur-header 之上 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: none;
+  padding: 0;
+  pointer-events: auto;
+}
+
+/* logo-link 基本交互容器 */
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 220ms cubic-bezier(.2,.9,.2,1), filter 180ms ease;
+  transform-origin: center;
+  will-change: transform, filter;
+}
+
+/* logo-img：尺寸受控 + 常态动画（浮动 + 脉冲） */
+.logo-img {
+  height: auto !important;      /* 调整为合适大小（24/28/36 可试） */
+  width: 150px !important;
+  object-fit: contain;
+  display: block;
+  opacity: 0.86;
+  transition: opacity 160ms ease, transform 180ms ease, filter 180ms ease;
+  animation: logo-float 6.8s ease-in-out infinite, logo-pulse 5.6s ease-in-out infinite;
+}
+
+/* 悬停/聚焦：暂停常态动画并突出效果 */
+.logo-link:hover .logo-img,
+.logo-link:focus .logo-img {
+  transform: translateY(-8px) scale(1.12) rotate(-1deg);
+  opacity: 1;
+  filter: drop-shadow(0 12px 30px rgba(0,0,0,0.45)) saturate(1.08);
+  animation-play-state: paused;
+}
+
+/* 点击反馈 */
+.logo-link:active .logo-img {
+  transform: translateY(-4px) scale(1.06);
+  transition-duration: 120ms;
+}
+
+/* 关键帧：轻微上下漂浮 */
+@keyframes logo-float {
+  0%   { transform: translateY(0) scale(1); }
+  25%  { transform: translateY(-3px) scale(1.01); }
+  50%  { transform: translateY(0) scale(1); }
+  75%  { transform: translateY(3px) scale(0.995); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* 关键帧：缓慢脉冲（透明度与轻阴影） */
+@keyframes logo-pulse {
+  0%   { filter: none; opacity: 0.86; }
+  50%  { filter: drop-shadow(0 6px 14px rgba(255,215,0,0.06)); opacity: 0.92; }
+  100% { filter: none; opacity: 0.86; }
+}
+
+/* 尊重用户无动画偏好 */
+@media (prefers-reduced-motion: reduce) {
+  .logo-img {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+@media (max-width: 100px) {
+  .logo-img {
+    height: auto !important;
+    max-width: 100% !important;
+  }
+}
+
+
+/* 渐变模糊遮罩（底部才有模糊，且逐渐增强） */
+.top-image::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 60px;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(10,23,78,0) 0%,
+    rgba(10,23,78,0.2) 40%,
+    rgba(10,23,78,0.7) 100%
+  );
+  filter: blur(12px);
+  z-index: 2;
+}
+
+.blur-header {
+  margin-top: -5px;
+  position: below the top-image;
+  width: 100%;
+  background: rgba(10,23,78,0.7);
+  backdrop-filter: blur(12px);
+  text-align: center;
+  font-size: clamp(18px, 2.6vw, 34px);
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: #fff;
+  padding: 18px 0 10px 0;
+  z-index: 20;
+  box-shadow: 0 2px 12px rgba(10, 23, 78, 0.12);
+  letter-spacing: 2px;
+  font-weight: 1000;
+}
+
+.main-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 0;
+  z-index: 5;
+  position: relative;
+  font-size: 16px;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: none;
+  margin-bottom: 28px;
+}
+
+.nav-menu a {
+  display: block;
+  background: rgba(10,23,78,0.85);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(10, 23, 78, 0.18);
+  padding: 18px 0;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 2.15em;
+  text-align: center;
+  transition: 
+    background 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s,
+    color 0.2s;
+  border: 2px solid #1a237e;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-menu a:active {
+  background: #1a237e;
+  transform: scale(0.97);
+  box-shadow: 0 1px 4px rgba(10, 23, 78, 0.28);
+}
+
+.nav-menu a:hover {
+  background: #162447;
+  color: #ffd700;
+  box-shadow: 0 4px 16px rgba(10, 23, 78, 0.28);
+
+  transform: scale(1.03);
+}
+
+.section {
+  background: rgba(10,23,78,0.92);
+  border-radius: 18px;
+  padding: 28px 22px;
+  margin: 18px 0;
+  box-shadow: 0 2px 12px rgba(10, 23, 78, 0.18);
+  animation: fadeIn 1.2s;
+  border: 2px solid #1a237e;
+  height: auto !important;
+}
+
+.section h2 {
+  color: #ffd700;
+  margin-bottom: 14px;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 3em;
+  text-align: center;
+}
+
+.section p, .section ul, .section li {
+  font-family: 'Raleway', Arial, sans-serif;
+  font-size: 3em;
+  font-style: italic;
+  font-weight: bold;
+  line-height: 2em;
+  color: #ffffff;
+}
+
+p{
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+x{
+  font-size: 1.3em;
+  font-weight: 500;
+  line-height: 1.8em;
+  font-style: italic;
+  font-weight: bold;
+  font-family: 'Times New Roman';
+  color: gold;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.y{
+  font-size: 1.3em;
+  font-weight: 500;
+  line-height: 1.8em;
+  font-style: italic;
+  font-weight: bold;
+  font-family: 'Times New Roman';
+  color: lightblue;
+}
+
+.y{ 
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.m{
+  font-size: 20%;
+  font-weight: bold;
+  line-height: 1.8em;
+  font-style: italic;
+  font-weight: bold;
+  font-family: 'Times New Roman';
+  color: navy;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.joinus{
+  text-align: center;
+  font-size: 1em;
+  font-style: "Times New Roman";
+  font-weight: 700;
+  color: #ffd900;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+/* Button style for future use */
+.colorful-btn {
+  margin-top: 24px;
+  padding: 14px 36px;
+  font-size: 1.1em;
+  color: #fff;
+  background: linear-gradient(90deg, #1a237e, #0a174e);
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 4px 20px rgba(10, 23, 78, 0.18);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+}
+
+.colorful-btn:hover {
+  transform: scale(1.07);
+  box-shadow: 0 8px 30px rgba(10, 23, 78, 0.28);
+  background: #ffd700;
+  color: #1a237e;
+}
+
+/* 会议卡片通用样式 */
+.meeting-card {
+  display: block; /* 让链接占满一行，成为“块级卡片” */
+  background-color: rgba(255, 255, 255, 0.1); /* 半透明背景（与深蓝色背景融合） */
+  border: 1px solid lightblue; /* 浅蓝色边框 */
+  border-radius: 8px; /* 圆角优化 */
+  padding: 15px; /* 内边距，增加文字呼吸感 */
+  margin: 10px 0; /* 上下外边距，分隔不同卡片 */
+  color: lightblue; /* 文字颜色（浅蓝色） */
+  font-family: 'Times New Roman', Times, serif; /* 字体 */
+  text-decoration: none; /* 去掉链接默认下划线 */
+  transition: background-color 0.3s ease; /* hover 效果的平滑过渡 */
+}
+
+/* 鼠标悬浮时的交互效果 */
+.meeting-card:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* 悬浮时背景更亮 */
+  text-decoration: underline; /* 悬浮时显示下划线，提示可点击 */
+}
+
+/* 标题样式（保持与整体一致） */
+h2 {
+  font-family: 'Times New Roman', Times, serif;
+  color: lightblue; /* 或根据设计调整为黄色等 */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 保留原有样式（如.top-image、.blur-header 等，需根据实际项目补充） */
+.top-image {
+  /* 原有顶部图片样式... */
+  position: relative;
+  width: 100vw;
+  height: auto;
+  overflow: hidden;
+  background: #0a174e;
+}
+.blur-header {
+  /* 原有模糊标题样式... */
+  width: 100%;
+  background: rgba(10,23,78,0.7);
+  backdrop-filter: blur(12px);
+  text-align: center;
+  font-size: clamp(23px, 2.2vw, 25px);
+  font-family: 'Times New Roman', Times, serif;
+  color: #fff;
+  padding: 18px 0 10px 0;
+}
+
+.meeting-card {
+  display: block;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid lightblue;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 15px auto;
+  width: 90%;
+  max-width: 1200px;
+  color: lightblue;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 30px;
+  text-decoration: none;
+  transition: background-color 0.3s ease; /*  hover 动画 */
+}
+
+.meeting-card:hover {
+  background-color: rgba(255, 255, 255, 0.2); /*  hover 时加深背景 */
+}
+
+/* 会议信息分栏 */
+.meeting-info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* 小屏幕自动换行 */
+}
+
+.meeting-item {
+  flex: 1;
+  min-width: 200px;
+  margin: 5px;
+  line-height: 1.6;
+}
+
+/* 返回链接（可在会议详情页复用） */
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: rgba(10, 23, 78, 0.7);
+  color: lightblue;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  font-size: 50px;
+}
+
+.back-link img {
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  margin-left: 8px;
+
+}
+
+.back-link:hover {
+  background-color: rgba(10, 23, 78, 0.9);
+}
+
+/* 响应式适配（小屏幕） */
+@media (max-width: 768px) {
+  .blur-header {
+    font-size: 2.5em;
+  }
+  .meeting-info {
+    flex-direction: column; /* 小屏幕下垂直排列 */
+  }
+  .meeting-item {
+    min-width: auto;
+    margin: 5px 0;
+  }
+}
+
+.image-carousel {
+  width: 100%;
+  aspect-ratio: 16 / 9;    /* 容器按 16:9 比例缩放，避免固定高度导致留白 */
+  max-height: 60vh;        /* 可选上限，按需调整 */
+  position: relative;
+  margin-top: 30px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+/* 图片占满容器，但使用 contain 保证上下完整可见；
+   在窄屏时图片会按比例缩小（左右缩小或留空），不会裁剪上下 */
+.carousel-img {
+  position: absolute;
+  inset: 0;                /* top:0; right:0; bottom:0; left:0; */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;     /* 保证完整显示（无上下裁剪） */
+  object-position: center;
+  display: block;
+  opacity: 0;
+  animation: carousel-play 12s infinite;
+  border-radius: 4px;
+}
+
+/* 每张图片的动画延迟（实现“依次显示”） */
+.carousel-img:nth-child(1) {
+  animation-delay: 0s; /* 第1张：0秒后开始 */
+}
+.carousel-img:nth-child(2) {
+  animation-delay: 4s; /* 第2张：4秒后开始 */
+}
+.carousel-img:nth-child(3) {
+  animation-delay: 8s; /* 第3张：8秒后开始 */
+}
+.carousel-img:nth-child(4) {
+  animation-delay: 12s; /* 第4张：12秒后开始 */
+}
+/* 若有更多图片，继续添加：nth-child(4) 延迟12s，以此类推 */
+
+/* 关键帧动画：控制“显示→保持→隐藏”的过程 */
+@keyframes carousel-play {
+  0% {
+    opacity: 0; /* 开始：透明 */
+  }
+  10% {
+    opacity: 1; /* 10%时长时：完全显示 */
+  }
+  33% {
+    opacity: 1; /* 保持显示到33%时长 */
+  }
+  43% {
+    opacity: 0; /* 43%时长时：透明（隐藏） */
+  }
+  100% {
+    opacity: 0; /* 结束：透明 */
+  }
+}
+
+.about-poster {
+  display: block;
+  margin: 1.5em auto 2em; 
+  max-width: 85%; 
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* 成员横向排列容器 */
+.members-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 30px 0;
+}
+
+/* 单个成员项样式 */
+.member-item {
+  width: 250px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+
+/* 成员头像样式（使用附件的黑色圆形图标） */
+.member-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  display: block;
+}
+
+/* 成员姓名样式 */
+.member-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #0a174e;
+}
+
+/* 成员职位样式 */
+.member-position {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  color: navy;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* 成员介绍样式 */
+.member-intro {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+  color: black;
+  text-align: left;
+}
+
+/* Guestbook：确保留言框与输入框都能变大且响应式（替换原有错误选择器） */
+#guestbook-form textarea,
+#guestbook-form input[type="text"],
+#guestbook-form input[type="email"] {
+  width: 100% !important;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+  font-size: 1.05rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.03);
+  color: var(--white, #fff);
+  outline: none;
+}
+
+/* 专门控制留言框高度 */
+#guestbook-form textarea {
+  height: 360px !important;
+  min-height: 260px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+/* 按钮调整（可选） */
+#guestbook-form button[type="submit"] {
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+/* 移动端微调 */
+@media (max-width: 520px) {
+  #guestbook-form textarea { height: 260px !important; min-height: 160px; }
+  #guestbook-form input[type="text"],
+  #guestbook-form input[type="email"] { font-size: 1rem; padding: 10px; }
+}
+
+/* 修正根字号，确保桌面默认大小合理 */
+html {
+  font-size: 25px; /* 桌面默认基准 */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body .main-content {
+  font-size: clamp(1.15rem, 1.05rem + 0.9vw, 1.2rem); /* 16px - ~18.4px */
+  line-height: 1.6;
+}
+
+body .section {
+  font-size: inherit; /* 继承 main-content */
+}
+
+/* 段落更易读 */
+body .section p,
+body .section ul,
+body .section li {
+  font-size: clamp(1.25rem, 1.15rem + 0.9vw, 1.5rem);
+  line-height: 1.6;
+}
+
+/* 标题适度放大 */
+body .section h2 {
+  font-size: clamp(1.25rem, 1rem + 2.2vw, 1.9rem);
+  line-height: 1.25;
+  margin-bottom: 0.6em;
+}
+
+body .blur-header {
+  font-size: clamp(1.5rem, 1rem + 0.5vw, 2rem);
+}
+
+
+/* 导航、按钮等次要文本 */
+.nav-menu a,
+.back-link,
+#guestbook-form button {
+  font-size: clamp(0.95rem, 0.9rem + 0.8vw, 1rem);
+}
+
+/* 保证移动端仍比桌面小 */
+@media (max-width: 520px) {
+  html { font-size: 15px; } /* 手机基准略小 */
+  .home-intro { font-size: clamp(1.05rem, 1rem + 1.6vw, 1.35rem); }
+}
+
+@media (max-width: 420px) {
+  body .main-content { font-size: 1rem; }
+  body .section h2 { font-size: 1.25rem; }
+}
+
+
+/* 如果有局部规则把字体强制写死为 px，优先级低时可用更具体选择器覆盖 */
+body .section p { /* 更高优先级覆盖陈旧规则 */ 
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.125rem);
+}
+
+/* 社交图标容器：水平居中并控制间距 */
+.social-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;           /* 水平间距，按需调整 */
+  margin: 12px 0;
+}
+
+/* 默认图标尺寸（可被下面具体选择器覆盖） */
+.social-row img {
+  display: block;
+  width: auto;
+  max-width: 60px;
+  height: auto;
+}
+
+/* 单独调整 Instagram 图（根据 alt 或位置选择） */
+.social-row img[alt="Instagram"] {
+  max-width: 50px;
+  width: 50px !important;   /* 如有 inline width，可用 !important 覆盖 */
+}
+
+/* 单独调整 Gmail 图（根据 alt） */
+.social-row img[alt="gmail"] {
+  max-width: 75px;
+  width: 75px !important;
+}
+
+/* ===== High-End Christmas Header ===== */
+.xmas-header {
+  text-align: center;
+  padding: 40px 0 60px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.12);
+  border-bottom: 2px solid rgba(255, 215, 0, 0.55);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+/* 发光金色标题 */
+.xmas-title {
+  font-size: 48px;
+  font-weight: 800;
+  color: #fff9d9;
+  letter-spacing: 3px;
+  text-shadow:
+    0 0 10px #ffe9a0,
+    0 0 20px #ffd700,
+    0 0 35px #ffcc00;
+}
+
+/* SVG 圣诞灯感觉更高级，自动缩放 */
+.lights-svg {
+  width: 95%;
+  max-width: 900px;
+  margin-top: 20px;
+}
+
+/* 彩灯基础样式 */
+.light {
+  filter: drop-shadow(0 0 6px white);
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* 彩灯颜色 */
+.red   { fill: #ff3b3b; }
+.green { fill: #7dff93; }
+.blue  { fill: #82caff; }
+.gold  { fill: #ffe066; }
+
+/* 轻微闪亮动画 */
+@keyframes glow {
+  0%   { opacity: 0.75; transform: scale(1); }
+  50%  { opacity: 1; transform: scale(1.15); }
+  100% { opacity: 0.75; transform: scale(1); }
+}
+
