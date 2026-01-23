@@ -150,6 +150,8 @@
                 <li><a href="about.html" data-key="nav-about">About</a></li>
                 <li><a href="contact.html" data-key="nav-contact">Contact</a></li>
                 <li><a href="announcements.html" data-key="nav-announcement">Announcements</a></li>
+                <li><a href="meetings.html" data-key="nav-meetings">Meetings</a></li>
+                <li><a href="support.html" data-key="nav-support">Get Support</a></li>
                 <li><a href="guestbook.html" data-key="nav-feedback">Feedback</a></li>
                 <li><a href="index.html#support" class="btn-donate-nav" data-key="nav-donate" onclick="closeMenu()">Donate</a></li>
             </ul>
@@ -213,43 +215,43 @@
         // --- 多语言翻译字典 ---
         const i18n = {
             'en': {
-                'nav-home': 'Home', 'nav-about': 'About', 'nav-contact': 'Contact', 'nav-announcement': 'Announcements', 'nav-feedback': 'Feedback', 'nav-donate': 'Donate', 'nav-privacy': 'Privacy Policy', 'nav-terms': 'Terms of Use',
+                'nav-home': 'Home', 'nav-about': 'About', 'nav-contact': 'Contact', 'nav-announcement': 'Announcements', 'nav-meetings': 'Meetings', 'nav-support': 'Get Support', 'nav-feedback': 'Feedback', 'nav-donate': 'Donate', 'nav-privacy': 'Privacy Policy', 'nav-terms': 'Terms of Use',
                 'form-h': 'Message Board', 'form-sub': 'We want to hear from you! Leave your thoughts below.',
                 'form-name': 'Name (Optional)', 'form-email': 'Email (Optional)', 'form-msg': 'Message (Required)', 'form-btn': 'Submit Message',
                 'status-loading': 'Submitting...', 'status-success': 'Success! Thank you for your message.', 'status-error': 'Submission failed, please try again.'
             },
             'zh-hans': {
-                'nav-home': '首页', 'nav-about': '关于我们', 'nav-contact': '联系我们', 'nav-announcement': '公告通知', 'nav-feedback': '反馈', 'nav-donate': '捐赠支持', 'nav-privacy': '隐私政策', 'nav-terms': '使用条款',
+                'nav-home': '首页', 'nav-about': '关于我们', 'nav-contact': '联系我们', 'nav-announcement': '公告通知', 'nav-meetings': '会议安排', 'nav-support': '获取帮助', 'nav-feedback': '反馈', 'nav-donate': '捐赠支持', 'nav-privacy': '隐私政策', 'nav-terms': '使用条款',
                 'form-h': '留言板', 'form-sub': '期待您的声音！请在下方留言。',
                 'form-name': '姓名（选填）', 'form-email': '邮箱（选填）', 'form-msg': '内容（必填）', 'form-btn': '提交留言',
                 'status-loading': '提交中...', 'status-success': '提交成功，感谢您的反馈！', 'status-error': '提交失败，请重试。'
             },
             'zh-hant': {
-                'nav-home': '首頁', 'nav-about': '關於我們', 'nav-contact': '聯絡我們', 'nav-announcement': '公告通知', 'nav-feedback': '回饋', 'nav-donate': '捐贈支持', 'nav-privacy': '隱私政策', 'nav-terms': '使用條款',
+                'nav-home': '首頁', 'nav-about': '關於我們', 'nav-contact': '聯絡我們', 'nav-announcement': '公告通知', 'nav-meetings': '會議安排', 'nav-support': '獲取幫助', 'nav-feedback': '回饋', 'nav-donate': '捐贈支持', 'nav-privacy': '隱私政策', 'nav-terms': '使用條款',
                 'form-h': '留言板', 'form-sub': '期待您的聲音！請在下方留言。',
                 'form-name': '姓名（選填）', 'form-email': '郵箱（選填）', 'form-msg': '內容（必填）', 'form-btn': '提交留言',
                 'status-loading': '提交中...', 'status-success': '提交成功，感謝您的回饋！', 'status-error': '提交失敗，請重試。'
             },
             'ko': {
-                'nav-home': '홈', 'nav-about': '정보', 'nav-contact': '문의하기', 'nav-announcement': '공지사항', 'nav-feedback': '피드백', 'nav-donate': '기부', 'nav-privacy': '개인정보', 'nav-terms': '이용약관',
+                'nav-home': '홈', 'nav-about': '정보', 'nav-contact': '문의하기', 'nav-announcement': '공지사항', 'nav-meetings': '회의 일정', 'nav-support': '지원 받기', 'nav-feedback': '피드백', 'nav-donate': '기부', 'nav-privacy': '개인정보', 'nav-terms': '이용약관',
                 'form-h': '게시판', 'form-sub': '여러분의 의견을 들려주세요!',
                 'form-name': '성함 (선택)', 'form-email': '이메일 (선택)', 'form-msg': '메시지 (필수)', 'form-btn': '제출하기',
                 'status-loading': '제출 중...', 'status-success': '성공! 감사합니다.', 'status-error': '실패했습니다. 다시 시도해주세요.'
             },
             'ja': {
-                'nav-home': 'ホーム', 'nav-about': '詳細', 'nav-contact': 'お問い合わせ', 'nav-announcement': 'お知らせ', 'nav-feedback': '感想', 'nav-donate': '寄付', 'nav-privacy': 'ポリシー', 'nav-terms': '規約',
+                'nav-home': 'ホーム', 'nav-about': '詳細', 'nav-contact': 'お問い合わせ', 'nav-announcement': 'お知らせ', 'nav-meetings': '会議予定', 'nav-support': 'サポートを受ける', 'nav-feedback': '感想', 'nav-donate': '寄付', 'nav-privacy': 'ポリシー', 'nav-terms': '規約',
                 'form-h': '掲示板', 'form-sub': '皆様のご意見をお聞かせください！',
                 'form-name': 'お名前 (任意)', 'form-email': 'メール (任意)', 'form-msg': 'メッセージ (必須)', 'form-btn': '送信する',
                 'status-loading': '送信中...', 'status-success': '送信完了、ありがとうございます。', 'status-error': 'エラーが発生しました。'
             },
             'es': {
-                'nav-home': 'Inicio', 'nav-about': 'Acerca de', 'nav-contact': 'Contacto', 'nav-announcement': 'Anuncios', 'nav-feedback': 'Comentarios', 'nav-donate': 'Donar', 'nav-privacy': 'Privacidad', 'nav-terms': 'Términos',
+                'nav-home': 'Inicio', 'nav-about': 'Acerca de', 'nav-contact': 'Contacto', 'nav-announcement': 'Anuncios',  'nav-meetings': 'Reuniones', 'nav-support': 'Obtener Soporte', 'nav-feedback': 'Comentarios', 'nav-donate': 'Donar', 'nav-privacy': 'Privacidad', 'nav-terms': 'Términos',
                 'form-h': 'Tablón de Mensajes', 'form-sub': '¡Queremos saber de ti! Déjanos tu mensaje.',
                 'form-name': 'Nombre (Opcional)', 'form-email': 'Email (Opcional)', 'form-msg': 'Mensaje (Requerido)', 'form-btn': 'Enviar Mensaje',
                 'status-loading': 'Enviando...', 'status-success': '¡Éxito! Gracias por tu mensaje.', 'status-error': 'Error, intenta de nuevo.'
             },
             'fr': {
-                'nav-home': 'Accueil', 'nav-about': 'À propos', 'nav-contact': 'Contact', 'nav-announcement': 'Annonces', 'nav-feedback': 'Avis', 'nav-donate': 'Donner', 'nav-privacy': 'Confidentialité', 'nav-terms': 'Conditions',
+                'nav-home': 'Accueil', 'nav-about': 'À propos', 'nav-contact': 'Contact', 'nav-announcement': 'Annonces', 'nav-meetings': 'Réunions', 'nav-support': 'Obtenir de l\'aide', 'nav-feedback': 'Avis', 'nav-donate': 'Donner', 'nav-privacy': 'Confidentialité', 'nav-terms': 'Conditions',
                 'form-h': 'Livre d\'or', 'form-sub': 'Votre avis nous intéresse !',
                 'form-name': 'Nom (Optionnel)', 'form-email': 'Email (Optionnel)', 'form-msg': 'Message (Requis)', 'form-btn': 'Envoyer',
                 'status-loading': 'Envoi...', 'status-success': 'Succès ! Merci.', 'status-error': 'Échec de l\'envoi.'
@@ -258,15 +260,37 @@
 
         let currentLang = 'en';
 
-        function updateLang(lang) {
-            currentLang = lang;
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
-            document.querySelectorAll('[data-key]').forEach(el => {
-                const key = el.getAttribute('data-key');
-                if (i18n[lang][key]) el.innerText = i18n[lang][key];
-            });
+          function updateLang(lang) {
+        // 保存到会话存储 (关闭标签页后消失)
+        sessionStorage.setItem('selectedLang', lang);
+
+        // 更新按钮 UI 状态
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            // 根据按钮的内容或点击的参数来匹配高亮
+            if (btn.getAttribute('onclick').includes(`'${lang}'`)) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        // 执行翻译
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const key = el.getAttribute('data-key');
+            if (i18n[lang] && i18n[lang][key]) {
+                el.innerText = i18n[lang][key];
+            }
+        });
+    }
+
+    // 4. 页面加载时自动初始化
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedLang = sessionStorage.getItem('selectedLang');
+        // 如果有保存的语言且不是默认的英文，则应用它
+        if (savedLang && savedLang !== 'en') {
+            updateLang(savedLang);
         }
+    });
 
         // --- 留言表单异步提交逻辑 ---
         const form = document.getElementById("guestbook-form");
