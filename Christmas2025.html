@@ -1,210 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>APSC Christmas Celebration</title>
-<link rel="icon" href="APSC_LOGO.ico" type="image/x-icon">
-
-<style>
-/* ===== 圣诞主题背景（渐变 + 雪花） ===== */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-  background: linear-gradient(#a8002a, #d42426, #8b001a);
-  color: white;
-  overflow-x: hidden;
-}
-
-/* 雪花动画 */
-@keyframes snow {
-  0% { transform: translateY(-10px); opacity: 1; }
-  100% { transform: translateY(100vh); opacity: 0; }
-}
-.snowflake {
-  position: fixed;
-  top: -10px;
-  font-size: 18px;
-  color: white;
-  opacity: 0.9;
-  animation: snow linear infinite;
-}
-.snowflake:nth-child(1) { left: 10%; animation-duration: 7s; }
-.snowflake:nth-child(2) { left: 25%; animation-duration: 9s; }
-.snowflake:nth-child(3) { left: 40%; animation-duration: 6.5s; }
-.snowflake:nth-child(4) { left: 55%; animation-duration: 8s; }
-.snowflake:nth-child(5) { left: 70%; animation-duration: 7.5s; }
-.snowflake:nth-child(6) { left: 85%; animation-duration: 10s; }
-
-/* ===== 顶部横幅（圣诞灯串） ===== */
-.header {
-  background: rgba(0,0,0,0.25);
-  padding: 30px 0;
-  text-align: center;
-  font-size: 40px;
-  font-weight: bold;
-  letter-spacing: 3px;
-  backdrop-filter: blur(4px);
-  border-bottom: 3px solid #ffd700;
-}
-
-.lights {
-  width: 100%;
-  margin-top: 10px;
-}
-.lights img {
-  width: 80%;
-  max-width: 600px;
-}
-
-/* ===== 主体区块 ===== */
-.section {
-  background: rgba(255,255,255,0.18);
-  padding: 25px;
-  margin: 30px auto;
-  width: 85%;
-  max-width: 900px;
-  border-radius: 18px;
-  backdrop-filter: blur(6px);
-  border: 2px solid rgba(255, 215, 0, 0.5);
-  box-shadow: 0 0 20px rgba(255,255,255,0.25);
-}
-
-/* 标题样式 */
-.section h2 {
-  text-align: center;
-  margin-top: 0;
-  font-size: 32px;
-  color: #fffacd;
-  text-shadow: 0 0 10px rgba(255,255,255,0.5);
-}
-
-/* 图片轮播 */
-.carousel {
-  display: flex;
-  gap: 12px;
-  margin-top: 20px;
-  overflow-x: scroll;
-  padding-bottom: 10px;
-}
-.carousel img {
-  border-radius: 12px;
-  width: 240px;
-  height: 160px;
-  object-fit: cover;
-  border: 2px solid white;
-  box-shadow: 0 0 10px rgba(255,255,255,0.3);
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  margin: 40px 0 20px;
-  font-size: 14px;
-  opacity: 0.8;
-}
-
-/* 社交图标 */
-.social-icons img {
-  width: 60px;
-  margin: 10px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="3;url=https://apscchs.org/">
+    <link rel="canonical" href="https://apscchs.org/">
+    <title>Moving to Our New Domain</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; line-height: 1.6; }
+        .loader { color: #555; }
+        a { color: #007bff; text-decoration: none; font-weight: bold; }
+    </style>
 </head>
 <body>
-<!-- 雪花元素 -->
-<div class="snowflake">❄</div>
-<div class="snowflake">✦</div>
-<div class="snowflake">❅</div>
-<div class="snowflake">❄</div>
-<div class="snowflake">✶</div>
-<div class="snowflake">❅</div>
+    <h1>We’ve Moved!</h1>
+    <p>Our website address has changed from <strong>apscchs.com</strong> to <strong>apscchs.org</strong>.</p>
+    <p class="loader">You will be redirected to our new home in a few seconds...</p>
+    <p>If you are not redirected automatically, <a href="https://apscchs.org/">click here to visit apscchs.org</a>.</p>
 
-<div class="logo-bar" style="text-align: center; margin-top: 60px;">
-  <a href="index.html" class="logo-link" aria-label="Home">
-    <img src="apsc-logo-image.png" alt="APSC Logo" style="width: 150px; height: auto;">
-  </a >
-</div>
-<!-- ===== HIGH-END CHRISTMAS HEADER ===== -->
-<header class="xmas-header">
-
-  <div class="xmas-decoration">
-    <svg viewBox="0 0 800 150" class="lights-svg" preserveAspectRatio="none">
-      <path d="M0 40 Q200 80 400 40 T800 40" stroke="#ffd700" stroke-width="4" fill="none"/>
-
-      <circle cx="80" cy="40" r="10" class="light red"></circle>
-      <circle cx="180" cy="60" r="10" class="light green"></circle>
-      <circle cx="280" cy="35" r="10" class="light gold"></circle>
-      <circle cx="380" cy="55" r="10" class="light blue"></circle>
-      <circle cx="480" cy="38" r="10" class="light red"></circle>
-      <circle cx="580" cy="60" r="10" class="light green"></circle>
-      <circle cx="680" cy="32" r="10" class="light gold"></circle>
-    </svg>
-  </div>
-</header>
-
-<!-- Section 1 -->
-<div class="section">
-  <h2>🎄 Welcome to Our Christmas Celebration!</h2>
-  <p style="text-align:center; font-size:18px; line-height:1.7;">
-    Join us for a warm and festive Christmas gathering hosted by the 
-    <strong>Asian Peer Support Club</strong>!  
-    Enjoy holiday snacks, music, fun games, and Christmas-themed activities.
-  </p >
-  <a href="https://forms.gle/g2xqR4NJ6PnZrPqUA"><img src="Christmas-Party.png" alt="APSC Christmas Event Poster" style="display:block; margin: 20px auto; max-width:80%; border-radius:12px; box-shadow: 0 0 15px rgba(255,255,255,0.3);"></a>
-</div>
-
-<!-- Section 2 -->
-<div class="section">
-  <h2>📅 Event Details</h2>
-  <p><strong>Date:</strong> December 19, 2025</p >
-  <p><strong>Time:</strong> Lunch Period</p >
-  <p><strong>Location:</strong> Room 1008, Clarksburg High School</p >
-  <p><strong>Activities:</strong> Potluck • Mini Games • Exciting prizes  • Holiday Photos</p >
-</div>
-
-<div class="section">
-    <h2>Register for the Event!</h2>
-    <ul style="font-size:18px; line-height:1.6;">
-        <li>If are interested in joining, please click <a href="https://forms.gle/g2xqR4NJ6PnZrPqUA" style="color: #ffd700;">"sign up!"</a></li >
-    </ul>
-</div>
-<!-- Section 3: Photos -->
-<div class="section">
-  <h2>✨ Last Year Highlights</h2>
-  <div class="carousel">
-    <img src="66f035997100c4bb53988637c20ff761.jpg">
-    <img src="734f38a3127a3b2c54df4a1a4161726a.jpg">
-    <img src="913164d2ede83efbd30f8d71dc7c7659.jpg">
-    <img src="ff7e979b2336fd37ea790bf546e72fbd.jpg">
-  </div>
-</div>
-
-<!-- Section 4 -->
-<div class="section">
-  <h2>🎅 Stay Connected</h2>
-  <div class="social-icons" style="text-align:center;">
-    <a href="https://www.instagram.com/apsc_chs/"><img src="ig_bw_logo.png"></a >
-    <a href="mailto:apscchs.1@gmail.com"><img src="gmail_bw_logo.png" style="width: 95px;"></a >
-  </div>
-</div>
-
-<!-- ===== Jump to Other Pages Section ===== -->
-<div class="section">
-  <h2>🎁 Visit Other Pages</h2>
-  <div style="text-align: center; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 20px;">
-    <a href="index.html" style="color:peachpuff;">Home</a>
-    <a href="about.html" style="color:peachpuff;">About Us</a>
-    <a href="meetings.html" style="color:peachpuff;">Meetings</a>
-    <a href="support.html" style="color:peachpuff;">Get Support</a>
-    <a href="contact.html" style="color:peachpuff;">Contact</a>
-    <a href="announcements.html" style="color:peachpuff;">Announcements</a>
-    <a href="messageboard.html" style="color:peachpuff;">Message Board</a>
-  </div>
-</div>
-
-<div class="footer">© 2025 Asian Peer Support Club</div>
-
+    <script>
+        // 立即尝试跳转，不等待 3 秒
+        setTimeout(function() {
+            window.location.replace("https://apscchs.org/Christmas2025.html");
+        }, 1000);
+    </script>
 </body>
 </html>
